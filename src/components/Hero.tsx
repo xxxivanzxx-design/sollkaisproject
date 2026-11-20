@@ -154,7 +154,7 @@ export function Hero() {
         <div className="hero__media" aria-hidden="true">
           <img src={HERO_IMG} alt={`${selected.label} titanium finish`} fetchPriority="high" decoding="async" />
           <span
-            className="hero__finish-tint"
+            className="hero__phone-tint"
             style={{ '--finish-tone': selected.color } as React.CSSProperties}
           />
           <span className="hero__lens" ref={lensRef} />
