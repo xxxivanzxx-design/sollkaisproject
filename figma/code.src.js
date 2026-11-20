@@ -1,9 +1,9 @@
 /**
- * NOCTIS C1 — Launch Site
+ * NOCTIS 18 Pro Max — Launch Site
  * Generates the full design system and every page section in the current Figma file.
  *
  * Run: Figma → menu → Plugins → Development → Import plugin from manifest…
- *      pick manifest.json from this folder, then run "NOCTIS C1 — Launch Site".
+ *      pick manifest.json from this folder, then run "NOCTIS 18 Pro Max — Launch Site".
  */
 const IMG = __IMG__;
 
@@ -318,14 +318,14 @@ function nav(parent, opts = {}) {
   ellipse(tg, 21, 11, 8, { fill: C.ink0 });
   mono(tg, 'TAGS', 38, 10, { size: 8, color: C.paper, track: 14 });
 
-  button(n, 'Reserve — $2,490', 1272, 17, { w: 150, h: 38, size: 12 });
+  button(n, 'Notify me — $1,299', 1272, 17, { w: 150, h: 38, size: 12 });
   return n;
 }
 
 function footStrip(parent, y) {
   const cells = [
     ['Body', '96 × 62 × 29 mm'],
-    ['Mass', '412 g'],
+    ['Mass', '229 g'],
     ['Range', 'ISO 64–102,400'],
     ['Video', '6K 60p · 10-bit'],
   ];
@@ -360,20 +360,20 @@ function cover(page, x, y) {
   });
   nav(f);
 
-  const eb = eyebrow(f, 'NOCTIS C1 — Compact full-frame', 72, 296);
+  const eb = eyebrow(f, 'NOCTIS 18 Pro Max — iPhone 18 Pro Max concept', 72, 296);
   libTag(f, 'GSAP · SplitText + pin', 72 + eb.width + 14, 291);
 
   text(f, 'Pocket', 72, 330, { font: F.med, size: 104, lh: 88, track: -5.5 });
   text(f, 'the dark.', 72, 418, { font: F.med, size: 104, lh: 88, track: -5.5 });
   text(
     f,
-    'A 61-megapixel full-frame sensor and a fixed 28mm f/1.4 lens in a body that disappears in a jacket pocket. Built for the hour after sunset.',
+    'A A titanium-and-glass flagship with a cinematic display, pro camera system and all-day power. Designed for the hours that matter.',
     72,
     548,
     { size: 17, lh: 27, color: C.muted, w: 470, track: -1.5 },
   );
-  button(f, 'Reserve — $2,490', 72, 646, { w: 196, h: 50 });
-  button(f, 'Explore the lens  ↗', 284, 646, { w: 184, h: 50, kind: 'ghost' });
+  button(f, 'Notify me — $1,299', 72, 646, { w: 196, h: 50 });
+  button(f, 'Explore the display  ↗', 284, 646, { w: 184, h: 50, kind: 'ghost' });
   footStrip(f, 790);
 
   mono(f, 'SCROLL', 1300, 720, { size: 9, color: C.faint, track: 20 });
@@ -519,7 +519,7 @@ function numbers(page, x, y) {
   const sensor = card(72, 300, 751, 428, 'Card / Sensor');
   mono(sensor, 'SENSOR', 22, 20, { size: 9, color: C.faint, track: 19 });
   mono(sensor, '01', 706, 20, { size: 9, color: C.faint, track: 12 });
-  text(sensor, '61.2', 20, 300, { font: F.mono, size: 64, track: -5 });
+  text(sensor, '48', 20, 300, { font: F.mono, size: 64, track: -5 });
   mono(sensor, 'MP', 168, 330, { size: 11, color: C.muted, track: 6 });
   text(sensor, 'Full-frame BSI CMOS, 14-bit RAW, dual gain.', 20, 380, {
     size: 12,
@@ -585,7 +585,7 @@ function gallery(page, x, y) {
 
   const panels = [
     ['plinth', 'Concrete, 21:40', '28mm · f/1.4 · 1/60 · ISO 3200', 72, 540],
-    [null, 'The best camera is the one you forget you are holding.', 'FIELD NOTES — VOL. 03', 628, 360],
+    [null, 'The best phone is the one that disappears into your day.', 'FIELD NOTES — VOL. 03', 628, 360],
     ['street', 'Rain, 23:12', '28mm · f/1.4 · 1/30 · ISO 6400', 1004, 364],
   ];
   panels.forEach(([img, cap, meta, px, pw]) => {
@@ -606,7 +606,7 @@ function gallery(page, x, y) {
 }
 
 function aperture(page, x, y) {
-  const f = frame(page, '04 · Aperture', x, y, 1440, 900, { fill: C.ink0 });
+  const f = frame(page, '04 · Colorways', x, y, 1440, 900, { fill: C.ink0 });
   const eb = eyebrow(f, '05 — The aperture', 72, 220);
   libTag(f, 'Anime.js · iris + blur', eb.width + 86, 215);
   text(f, 'Nine blades.', 72, 252, { font: F.med, size: 60, lh: 62, track: -4.6 });
@@ -666,7 +666,7 @@ function round(page, x, y) {
   text(f, 'It is a real object.', 72, 312, { font: F.med, size: 58, lh: 60, track: -4.6 });
   text(
     f,
-    'The barrel is one turned aluminium tube. The focus ring is cut, not printed. The only colour on the camera is a 0.4 mm anodised ring under the front element.',
+    'Aerospace-grade titanium wraps a sculpted glass back. Four finishes bring subtle personality to the same precise silhouette.',
     72,
     398,
     { size: 14.5, lh: 24, color: C.muted, w: 430, track: -0.8 },
@@ -789,11 +789,11 @@ function reserve(page, x, y) {
   );
 
   const cardEl = frame(f, 'Reserve card', 792, 120, 576, 560, { fill: C.ink1, radius: 20, stroke: true });
-  mono(cardEl, 'NOCTIS C1 — BODY ONLY', 32, 34, { size: 9, color: C.faint, track: 18 });
-  text(cardEl, '$2,490', 32, 58, { font: F.mono, size: 44, track: -4 });
+  mono(cardEl, 'NOCTIS 18 PRO MAX — 256 GB', 32, 34, { size: 9, color: C.faint, track: 18 });
+  text(cardEl, '$1,299', 32, 58, { font: F.mono, size: 44, track: -4 });
   mono(cardEl, 'or $207/mo · 12 mo', 216, 82, { size: 9, color: C.faint, track: 6 });
   ellipse(cardEl, 32, 132, 5, { fill: C.signal });
-  mono(cardEl, '412 OF 2,000 LEFT', 44, 126, { size: 9, color: C.muted, track: 12 });
+  mono(cardEl, 'EARLY ACCESS OPEN', 44, 126, { size: 9, color: C.muted, track: 12 });
   hline(cardEl, 32, 166, 512);
   [
     ['IN THE BOX', 'C1 BODY · BATTERY · USB-C CABLE · STRAP'],
@@ -806,7 +806,7 @@ function reserve(page, x, y) {
   });
   rect(cardEl, 32, 344, 512, 52, { fill: '#FFFFFF', radius: 26, opacity: 0.03, stroke: line() });
   mono(cardEl, 'you@studio.com', 54, 361, { size: 12, color: C.faint, track: 2 });
-  button(cardEl, 'Reserve yours  →', 32, 412, { w: 512, h: 54, size: 14 });
+  button(cardEl, 'Notify me  →', 32, 412, { w: 512, h: 54, size: 14 });
   mono(cardEl, 'NO PAYMENT NOW. CANCEL ANY TIME BEFORE YOUR BUILD SHIPS.', 32, 484, {
     size: 7.5,
     color: C.faint,
@@ -836,7 +836,7 @@ function mobile(page, x, y) {
   rect(f, 296, 27, 34, 20, { fill: C.signal, radius: 10 });
   ellipse(f, 316, 31, 12, { fill: C.ink0 });
 
-  const eb = eyebrow(f, 'NOCTIS C1 — Compact full-frame', 20, 432);
+  const eb = eyebrow(f, 'NOCTIS 18 Pro Max — iPhone 18 Pro Max concept', 20, 432);
   libTag(f, 'GSAP · SplitText', 20, 452);
   text(f, 'Pocket', 20, 486, { font: F.med, size: 52, lh: 48, track: -4 });
   text(f, 'the dark.', 20, 534, { font: F.med, size: 52, lh: 48, track: -4 });
@@ -847,10 +847,10 @@ function mobile(page, x, y) {
     600,
     { size: 13, lh: 21, color: C.muted, w: 340, track: -0.6 },
   );
-  button(f, 'Reserve — $2,490', 20, 690, { w: 190, h: 44, size: 12 });
-  button(f, 'The lens  ↗', 220, 690, { w: 130, h: 44, size: 12, kind: 'ghost' });
+  button(f, 'Notify me — $1,299', 20, 690, { w: 190, h: 44, size: 12 });
+  button(f, 'The display  ↗', 220, 690, { w: 130, h: 44, size: 12, kind: 'ghost' });
   hline(f, 20, 762, 350);
-  mono(f, '412 G', 20, 778, { size: 9, color: C.paper, track: 6 });
+  mono(f, '229 G', 20, 778, { size: 9, color: C.paper, track: 6 });
   mono(f, '96 × 62 × 29 MM', 130, 778, { size: 9, color: C.faint, track: 6 });
   mono(f, 'ISO 64–102,400', 270, 778, { size: 9, color: C.faint, track: 6 });
   return f;
@@ -858,7 +858,7 @@ function mobile(page, x, y) {
 
 function designSystem(page, x, y) {
   const f = frame(page, 'Design system', x, y, 1440, 1180, { fill: C.ink0 });
-  const eb = eyebrow(f, 'NOCTIS C1 — Design system', 72, 72);
+  const eb = eyebrow(f, 'NOCTIS 18 Pro Max — Design system', 72, 72);
   text(f, 'The system', 72, 100, { font: F.med, size: 54, lh: 56, track: -4 });
   mono(f, 'ONE ACCENT · TWO TYPEFACES · ONE RADIUS', 72, 176, { size: 9, color: C.faint, track: 16 });
 
@@ -880,7 +880,7 @@ function designSystem(page, x, y) {
   });
 
   const type = [
-    ['Display / 104 · −5.5% · 88', 'Pocket the dark.', 104, 88, -5.5],
+    ['Display / 104 · −5.5% · 88', 'The next large thing.', 104, 88, -5.5],
     ['H2 / 60 · −4.5% · 62', 'Specification,', 60, 62, -4.5],
     ['H3 / 34 · −3% · 38', 'One piece of aluminium', 34, 38, -3],
     ['Lede / 17 · −1.5% · 27', 'Every number below is a decision.', 17, 27, -1.5],
@@ -899,8 +899,8 @@ function designSystem(page, x, y) {
   });
 
   mono(f, 'COMPONENTS', 860, 420, { size: 8, color: C.faint, track: 16 });
-  button(f, 'Reserve — $2,490', 860, 444, { w: 196, h: 50 });
-  button(f, 'Explore the lens  ↗', 1072, 444, { w: 184, h: 50, kind: 'ghost' });
+  button(f, 'Notify me — $1,299', 860, 444, { w: 196, h: 50 });
+  button(f, 'Explore the display  ↗', 1072, 444, { w: 184, h: 50, kind: 'ghost' });
   libTag(f, 'GSAP · SplitText + pin', 860, 516);
   libTag(f, 'Anime.js · iris + blur', 1046, 516);
   rect(f, 860, 560, 300, 140, { fill: C.card, radius: 20, stroke: true });
@@ -923,11 +923,11 @@ async function main() {
   await loadFonts();
 
   await figma.loadAllPagesAsync();
-  const previous = figma.root.children.find((p) => p.name === 'NOCTIS C1 · Launch Site');
+  const previous = figma.root.children.find((p) => p.name === 'NOCTIS 18 Pro Max · Launch Site');
   if (previous) previous.remove();
 
   const page = figma.createPage();
-  page.name = 'NOCTIS C1 · Launch Site';
+  page.name = 'NOCTIS 18 Pro Max · Launch Site';
   figma.currentPage = page;
   page.backgrounds = [solid(C.ink0)];
 
@@ -977,7 +977,7 @@ async function main() {
   });
 
   figma.viewport.scrollAndZoomIntoView(page.children.slice(0, 2));
-  figma.notify('NOCTIS C1 — design system + 9 frames created.', { timeout: 6000 });
+  figma.notify('NOCTIS 18 Pro Max — design system + 9 frames created.', { timeout: 6000 });
   figma.closePlugin();
 }
 

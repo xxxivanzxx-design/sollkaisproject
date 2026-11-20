@@ -36,7 +36,7 @@ export function LensStage() {
       id="stage"
       className="stage section"
       data-lib="React Three Fiber · lazy"
-      aria-label="The lens in 3D"
+      aria-label="The display in 3D"
     >
       <div className="shell stage__grid">
         <div className="stage__copy">
@@ -51,21 +51,21 @@ export function LensStage() {
           </h2>
           <p className="lede">
             The barrel is one turned aluminium tube. The focus ring is cut, not printed.
-            The only colour on the camera is a 0.4 mm anodised ring under the front element.
+            Four finishes bring subtle personality to the titanium frame: Midnight, Silver, Ocean and Desert.
           </p>
 
           <ul className="stage__specs">
             <li>
-              <span className="mono">Barrel</span>
-              <span className="mono">Turned aluminium, 96 mm</span>
+              <span className="mono">Frame</span>
+              <span className="mono">Grade 5 titanium</span>
             </li>
             <li>
-              <span className="mono">Focus ring</span>
-              <span className="mono">76 diamond cuts</span>
+              <span className="mono">Glass</span>
+              <span className="mono">Ceramic Shield</span>
             </li>
             <li>
-              <span className="mono">Accent</span>
-              <span className="mono stage__accent">Signal orange, 0.4 mm</span>
+              <span className="mono">Finishes</span>
+              <span className="mono stage__accent">Midnight · Silver · Ocean · Desert</span>
             </li>
           </ul>
 
@@ -108,7 +108,7 @@ export function LensStage() {
                 fallback={
                   <div className="stage__fallback">
                     <img src={SIDE_IMG} alt="" aria-hidden="true" />
-                    <span className="mono">Loading lens…</span>
+                    <span className="mono">Loading device…</span>
                   </div>
                 }
               >
@@ -116,7 +116,7 @@ export function LensStage() {
               </Suspense>
             ) : (
               <div className="stage__fallback stage__fallback--static">
-                <img src={SIDE_IMG} alt="Side profile of the NOCTIS C1" loading="lazy" />
+                <img src={SIDE_IMG} alt="Side profile of the NOCTIS 18 Pro Max" loading="lazy" />
                 <span className="mono">
                   {reduced ? '3D view off · reduced motion' : 'Static view'}
                 </span>

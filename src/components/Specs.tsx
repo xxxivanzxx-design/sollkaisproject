@@ -17,18 +17,18 @@ const DETAIL_IMG = {
 const DETAILS = [
   {
     id: 'body',
-    label: 'Body',
-    value: '412 g',
-    title: 'One piece of aluminium',
-    copy: 'Milled from a single billet, then bead-blasted and anodised. No seams on the grip side, no plastic caps, no flex. The tripod socket is machined into the chassis itself.',
+    label: 'Frame',
+    value: '8.4 mm',
+    title: 'Titanium, shaped by light',
+    copy: 'Grade 5 titanium meets a sculpted glass back. No seams on the grip side, no plastic caps, no flex. Every edge is tuned for the hand.',
     img: DETAIL_IMG.side,
   },
   {
     id: 'dials',
-    label: 'Dials',
-    value: '2',
-    title: 'Two dials. That is all.',
-    copy: 'Shutter and aperture, diamond-knurled, with 0.4 Nm of detent torque. Every other setting lives behind one press of the rear wheel, so your thumb never leaves the shutter.',
+    label: 'Camera system',
+    value: '3',
+    title: 'Three cameras. One point of view.',
+    copy: 'Refresh rate and aperture, diamond-knurled, with 0.4 Nm of detent torque. Every other setting lives behind one press of the rear wheel, so your thumb never leaves the shutter.',
     img: DETAIL_IMG.dial,
   },
   {
@@ -36,7 +36,7 @@ const DETAILS = [
     label: 'Screen',
     value: '3.1"',
     title: 'A screen you can trust at night',
-    copy: 'A 2.1M-dot OLED that tilts 110° and dims to 2 nits, so the frame you see in a dark street is the frame you get. Touch is there if you want it; every control works with gloves.',
+    copy: 'A 6.9-inch OLED with adaptive 1–120 Hz refresh and outdoor clarity tuned for the frame you see in bright sun.',
     img: DETAIL_IMG.rear,
   },
   {
@@ -44,7 +44,7 @@ const DETAILS = [
     label: 'Power',
     value: '340',
     title: '340 frames, one battery',
-    copy: 'A 1,250 mAh cell in the base plate. USB-C PD charges 0–80% in 38 minutes, and the camera runs from a power bank while it shoots tethered.',
+    copy: 'A 4,900 mAh cell supports a full day of capture. USB-C PD charges rapidly, and USB-C 4 keeps the phone ready for a pro workflow.',
     img: DETAIL_IMG.plinth,
   },
   {
@@ -52,7 +52,7 @@ const DETAILS = [
     label: 'Storage',
     value: '1 × CFe',
     title: 'One card. No compromise.',
-    copy: 'A single CFexpress Type B slot behind the battery door. 61-megapixel uncompressed RAW writes at 1.4 GB/s, so the buffer clears before you lower the camera.',
+    copy: '256 GB of fast storage, with room for spatial video, ProRes and the photos you keep coming back to.',
     img: DETAIL_IMG.hand,
   },
   {
@@ -60,12 +60,12 @@ const DETAILS = [
     label: 'Sealing',
     value: 'IP53',
     title: 'Weather is a feature',
-    copy: 'Gasketed ports, a sealed lens mount and a hydrophobic mesh over the speaker. Rated for rain, dust and the kind of night where you should have gone home an hour ago.',
+    copy: 'IP68 protection, sealed speakers and a ceramic front built for rain, dust and the kind of day where you should have gone home an hour ago.',
     img: DETAIL_IMG.dial,
   },
 ];
 
-function SensorDiagram() {
+function CameraSystemDiagram() {
   const cells = [];
   for (let r = 0; r < 9; r += 1) {
     for (let c = 0; c < 15; c += 1) {
@@ -128,11 +128,11 @@ function SpotlightCard() {
         <img src={DETAIL_IMG.dial} alt="Macro of the shutter-speed dial" loading="lazy" />
       </div>
       <div className="spot__body">
-        <span className="mono spec-card__k">Shutter</span>
+        <span className="mono spec-card__k">Refresh rate</span>
         <span className="spec-card__big mono">
           <CountUp value={8000} prefix="1/" />
         </span>
-        <p className="spec-card__copy">Mechanical, 1/8000 s, rated for 400,000 actuations.</p>
+        <p className="spec-card__copy">Adaptive 1–120 Hz, tuned for motion and battery life.</p>
       </div>
     </div>
   );
@@ -167,23 +167,23 @@ export function Specs() {
         <div className="bento">
           <article className="panel bento__cell bento__cell--sensor">
             <div className="spec-card__top">
-              <span className="mono spec-card__k">Sensor</span>
+              <span className="mono spec-card__k">Camera system</span>
               <span className="mono spec-card__index">01</span>
             </div>
             <div className="spec-card__number">
-              <CountUp value={61.2} decimals={1} />
+              <CountUp value={48} decimals={1} />
               <span className="spec-card__unit mono">MP</span>
             </div>
             <p className="spec-card__copy">
               Full-frame backside-illuminated CMOS. 14-bit RAW, dual gain, and a base ISO
               of 64 that stays clean to 3200.
             </p>
-            <SensorDiagram />
+            <CameraSystemDiagram />
           </article>
 
           <article className="panel bento__cell bento__cell--mass">
             <div className="spec-card__top">
-              <span className="mono spec-card__k">Mass</span>
+              <span className="mono spec-card__k">Weight</span>
               <span className="mono spec-card__index">02</span>
             </div>
             <div className="spec-card__number">
@@ -191,19 +191,19 @@ export function Specs() {
               <span className="spec-card__unit mono">g</span>
             </div>
             <p className="spec-card__copy">
-              Including battery and card. Lighter than a 70–200mm lens hood.
+              Titanium frame, ceramic front and a battery built to last through the day.
             </p>
           </article>
 
           <article className="panel bento__cell bento__cell--iso">
             <div className="spec-card__top">
-              <span className="mono spec-card__k">Native range</span>
+              <span className="mono spec-card__k">Brightness</span>
               <span className="mono spec-card__index">03</span>
             </div>
             <div className="spec-card__number spec-card__number--sm">
-              <CountUp value={102400} />
+              <CountUp value={2400} />
             </div>
-            <p className="spec-card__copy">ISO 64–102,400, expandable to 409,600.</p>
+            <p className="spec-card__copy">Up to 29 hours, expandable to 409,600.</p>
           </article>
 
           <article className="panel bento__cell bento__cell--video">
@@ -212,10 +212,10 @@ export function Specs() {
               <span className="mono spec-card__index">04</span>
             </div>
             <div className="spec-card__number spec-card__number--sm">
-              <span className="mono">6K</span>
+              <span className="mono">4K</span>
               <span className="spec-card__unit mono">60p</span>
             </div>
-            <p className="spec-card__copy">10-bit 4:2:2 internal, 12-bit ProRes RAW over USB-C.</p>
+            <p className="spec-card__copy">4K 120 fps, spatial video and ProRes capture.</p>
           </article>
 
           <article className="panel bento__cell bento__cell--battery">
@@ -234,7 +234,7 @@ export function Specs() {
         </div>
 
         <div className="detail">
-          <div className="detail__list" role="tablist" aria-label="Body details">
+          <div className="detail__list" role="tablist" aria-label="Thickness details">
             <div className="detail__list-head">
               <span className="mono">06 — The body, in detail</span>
               <span className="mono dim">{String(active + 1).padStart(2, '0')} / 06</span>

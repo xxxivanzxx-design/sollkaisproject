@@ -114,18 +114,18 @@ export function Aperture() {
       id="aperture"
       className="ap section"
       data-lib="Anime.js · iris + blur"
-      aria-label="The aperture"
+      aria-label="Colorways"
     >
       <div className="shell ap__grid">
         <div className="ap__copy">
           <div className="eyebrow-row">
-            <p className="eyebrow">05 — The aperture</p>
+            <p className="eyebrow">05 — Colorways</p>
             <LibTag>Anime.js · iris + blur</LibTag>
           </div>
           <h2 className="h2 ap__title">
-            Nine blades.
+            Four finishes.
             <br />
-            One breath.
+            One unmistakable silhouette.
           </h2>
           <p className="lede">
             A rounded nine-blade diaphragm that stays circular down to f/4, so a streetlight
@@ -135,9 +135,9 @@ export function Aperture() {
 
           <div className="ap__readouts">
             <div className="ap__readout">
-              <span className="mono ap__readout-k">Aperture</span>
+              <span className="mono ap__readout-k">Display</span>
               <span className="mono ap__readout-v" ref={readoutRef}>
-                f/1.4
+                2,400 nits
               </span>
             </div>
             <div className="ap__readout">
@@ -156,7 +156,7 @@ export function Aperture() {
 
           <p className="ap__hint mono">
             <span className="ap__hint-dot" />
-            Drag up to open · down to close · double-click to reset
+            Drag up to shift color · double-click to reset
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export function Aperture() {
             ref={stageRef}
             role="slider"
             tabIndex={0}
-            aria-label="Aperture opening"
+            aria-label="Display opening"
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={value}
@@ -179,7 +179,7 @@ export function Aperture() {
             onKeyDown={onKeyDown}
           >
             <div className="ap__photo">
-              <img ref={imgRef} src={PHOTO} alt="Night street photographed at f/1.4" loading="lazy" />
+              <img ref={imgRef} src={PHOTO} alt="Night street photographed at 2,400 nits" loading="lazy" />
             </div>
 
             <svg className="ap__iris" viewBox={`${-R} ${-R} ${R * 2} ${R * 2}`} aria-hidden="true">
@@ -227,7 +227,7 @@ export function Aperture() {
           </div>
 
           <div className="ap__stage-foot">
-            <span className="mono">28mm · 9 blades · f/1.4–f/16</span>
+            <span className="mono">120 Hz · 9 blades · 2,400 nits–f/16</span>
             <span className="mono dim">Anime.js · eased, not snapped</span>
           </div>
         </div>

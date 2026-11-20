@@ -12,10 +12,10 @@ import './nav.css';
 
 const LINKS = [
   { id: 'overview', label: 'Overview' },
-  { id: 'lens', label: 'Lens' },
+  { id: 'lens', label: 'Display' },
   { id: 'specs', label: 'Specs' },
   { id: 'gallery', label: 'Gallery' },
-  { id: 'aperture', label: 'Aperture' },
+  { id: 'aperture', label: 'Display' },
   { id: 'playground', label: 'Playground' },
 ];
 
@@ -102,7 +102,7 @@ export function Nav() {
               </svg>
             </span>
             <span className="nav__wordmark">NOCTIS</span>
-            <span className="nav__model mono">C1</span>
+            <span className="nav__model mono">18 PM</span>
           </button>
 
           <nav className="nav__links" aria-label="Sections">
@@ -139,8 +139,8 @@ export function Nav() {
 
             <Magnetic strength={0.22} className="nav__cta-wrap">
               <a className="btn btn--signal nav__cta" href="#reserve" onClick={(e) => { e.preventDefault(); go('reserve'); }}>
-                Reserve
-                <span className="mono nav__price">$2,490</span>
+                Notify me
+                <span className="mono nav__price">$1,299</span>
               </a>
             </Magnetic>
 
@@ -188,8 +188,8 @@ export function Nav() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.36, duration: 0.6 }}
               >
-                <span className="mono">61.2 MP · 28MM F/1.4 · 412 G</span>
-                <span className="mono dim">Ships spring 2027</span>
+                <span className="mono">48 MP · 120 HZ · 229 G</span>
+                <span className="mono dim">Concept release</span>
               </motion.div>
             </div>
           </motion.div>

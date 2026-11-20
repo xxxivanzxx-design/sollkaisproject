@@ -1,4 +1,4 @@
-# NOCTIS C1 — Figma handoff
+# NOCTIS 18 Pro Max — Figma handoff
 
 This folder is a **Figma development plugin**. It builds the whole design — the design system and every page section — inside your own Figma file. Nothing is uploaded anywhere; the plugin runs locally, and the photography is embedded in `code.js`.
 
@@ -7,9 +7,9 @@ This folder is a **Figma development plugin**. It builds the whole design — th
 1. Open Figma in the browser or the desktop app, in the file where you want the design (a new file is fine).
 2. Menu → **Plugins → Development → Import plugin from manifest…**
 3. Select `manifest.json` from this folder.
-4. Menu → **Plugins → Development → NOCTIS C1 — Launch Site**.
+4. Menu → **Plugins → Development → NOCTIS 18 Pro Max — Launch Site**.
 
-A new page called **NOCTIS C1 · Launch Site** appears with the design system on the right and the nine page frames stacked below it.
+A new page called **NOCTIS 18 Pro Max · Launch Site** appears with the design system on the right and the nine page frames stacked below it.
 
 Re-running the plugin replaces that page, so you can run it again in the same file without piling up copies.
 

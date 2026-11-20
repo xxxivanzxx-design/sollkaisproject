@@ -145,7 +145,7 @@ export function Playground() {
                   <circle cx="20" cy="20" r="2" fill="#ededea" />
                 </svg>
               </span>
-              <span className="pg__card-label mono">NOCTIS C1</span>
+              <span className="pg__card-label mono">NOCTIS 18 Pro Max</span>
               <span className="pg__card-sub mono">drag · no</span>
             </div>
             <span className="pg__run-count mono" key={runs}>

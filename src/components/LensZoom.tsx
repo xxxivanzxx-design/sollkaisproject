@@ -29,16 +29,16 @@ const CALLOUTS = [
     x: 9,
     y: 74,
     align: 'left',
-    title: 'f/1.4 maximum aperture',
-    meta: '9 ROUNDED BLADES',
+    title: '2,400 nits peak brightness',
+    meta: 'PRO MOTION DISPLAY',
   },
   {
     d: 'M50,52 L68,77 L91,77',
     x: 91,
     y: 77,
     align: 'right',
-    title: '28mm equivalent',
-    meta: 'FIXED · NO ZOOM',
+    title: '120 Hz equivalent',
+    meta: 'CERAMIC SHIELD GLASS',
   },
 ] as const;
 
@@ -108,14 +108,14 @@ export function LensZoom() {
       className="zoom"
       ref={rootRef}
       data-lib="GSAP · scrubbed zoom"
-      aria-label="The lens"
+      aria-label="The display"
     >
       <div className="zoom__pin" ref={pinRef}>
         <div className="zoom__media">
           <img
             className="zoom__img"
             src={LENS_IMG}
-            alt="Macro view of the NOCTIS C1 lens barrel and front element"
+            alt="Macro view of the NOCTIS 18 Pro Max display glass"
             loading="lazy"
             decoding="async"
           />
@@ -125,16 +125,16 @@ export function LensZoom() {
 
         <div className="zoom__head shell">
           <div className="eyebrow-row">
-            <p className="eyebrow">02 — The glass</p>
+            <p className="eyebrow">02 — The display</p>
             <LibTag>GSAP · scrubbed zoom</LibTag>
           </div>
           <h2 className="h2 zoom__title">
-            Eight elements.
+            One perfect surface.
             <br />
-            One intention.
+            Every pixel has a purpose.
           </h2>
           <p className="zoom__lede">
-            A fixed 28mm f/1.4 prime, computed as one optical system rather than a
+            A fixed 120 Hz 2,400 nits prime, computed as one optical system rather than a
             compromise between zoom ranges. It does not zoom. It does not wobble.
           </p>
         </div>
@@ -169,16 +169,16 @@ export function LensZoom() {
 
         <div className="zoom__hud">
           <div className="zoom__readout">
-            <span className="mono zoom__readout-k">Aperture</span>
-            <span className="mono zoom__readout-value">f/1.4</span>
+            <span className="mono zoom__readout-k">Display</span>
+            <span className="mono zoom__readout-value">2,400 nits</span>
           </div>
           <div className="zoom__readout">
-            <span className="mono zoom__readout-k">Focal</span>
-            <span className="mono zoom__readout-value">28mm</span>
+            <span className="mono zoom__readout-k">Refresh</span>
+            <span className="mono zoom__readout-value">120 Hz</span>
           </div>
           <div className="zoom__readout zoom__readout--dim">
-            <span className="mono zoom__readout-k">Min focus</span>
-            <span className="mono zoom__readout-value">0.28m</span>
+            <span className="mono zoom__readout-k">Brightness</span>
+            <span className="mono zoom__readout-value">1–120 Hz</span>
           </div>
         </div>
       </div>

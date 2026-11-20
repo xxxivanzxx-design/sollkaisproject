@@ -18,13 +18,13 @@ const PANELS = [
     kind: 'image',
     src: IMG.plinth,
     caption: 'Concrete, 21:40',
-    meta: '28mm · f/1.4 · 1/60 · ISO 3200',
+    meta: '120 Hz · 2,400 nits · 1/60 · ISO 3200',
     size: 'wide',
     pos: '24% 50%',
   },
   {
     kind: 'quote',
-    text: 'The best camera is the one you forget you are holding.',
+    text: 'The best phone is the one that disappears into your day.',
     meta: 'FIELD NOTES — VOL. 03',
     size: 'narrow',
   },
@@ -32,14 +32,14 @@ const PANELS = [
     kind: 'image',
     src: IMG.street,
     caption: 'Rain, 23:12',
-    meta: '28mm · f/1.4 · 1/30 · ISO 6400',
+    meta: '120 Hz · 2,400 nits · 1/30 · ISO 6400',
     size: 'mid',
   },
   {
     kind: 'image',
     src: IMG.hand,
     caption: 'Handheld, 19:58',
-    meta: '28mm · f/2 · 1/125 · ISO 800',
+    meta: '120 Hz · f/2 · 1/125 · ISO 800',
     size: 'tall',
     pos: '50% 42%',
   },
@@ -54,7 +54,7 @@ const PANELS = [
     kind: 'image',
     src: IMG.side,
     caption: 'Profile, studio',
-    meta: '96 × 62 × 29 mm',
+    meta: '8.4 mm',
     size: 'wide',
     pos: '50% 50%',
   },
@@ -125,7 +125,7 @@ export function Gallery() {
               <p className="eyebrow">04 — Frames</p>
               <LibTag>GSAP · horizontal pin</LibTag>
             </div>
-            <h2 className="h2 gallery__title">No retouching. No excuses.</h2>
+            <h2 className="h2 gallery__title">Four finishes. One silhouette.</h2>
           </div>
           <div className="gallery__meter">
             <span className="mono gallery__count">
@@ -163,9 +163,9 @@ export function Gallery() {
               ),
             )}
             <div className="gallery__panel gallery__panel--end gallery__panel--narrow">
-              <p className="mono">End of roll</p>
-              <p className="h3">Six frames from one night in Osaka.</p>
-              <span className="mono dim">Shot on NOCTIS C1 · 61.2 MP · no crop</span>
+              <p className="mono">End of the set</p>
+              <p className="h3">Four colorways, one point of view.</p>
+              <span className="mono dim">Shot on NOCTIS 18 Pro Max · 48 MP · no crop</span>
             </div>
           </div>
         </div>

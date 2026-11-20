@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SplitText } from 'gsap/SplitText';
 import { gsap, ScrollTrigger } from '../lib/smooth';
 import { usePrefs } from '../lib/prefs';
@@ -8,12 +8,18 @@ import { LibTag } from './ui/LibTag';
 import './hero.css';
 
 const HERO_IMG = MEDIA.hero;
+const COLORWAYS = [
+  { id: 'midnight', label: 'Midnight', color: '#242428', image: MEDIA.midnight },
+  { id: 'silver', label: 'Silver', color: '#c6c7c9', image: MEDIA.silver },
+  { id: 'ocean', label: 'Ocean', color: '#17344c', image: MEDIA.blue },
+  { id: 'desert', label: 'Desert', color: '#a98e72', image: MEDIA.sand },
+] as const;
 
 const STATS = [
-  { k: 'Body', v: '96 × 62 × 29 mm' },
-  { k: 'Mass', v: '412 g' },
-  { k: 'Range', v: 'ISO 64–102,400' },
-  { k: 'Video', v: '6K 60p · 10-bit' },
+  { k: 'Thickness', v: '8.4 mm' },
+  { k: 'Weight', v: '229 g' },
+  { k: 'Battery', v: 'Up to 29 hours' },
+  { k: 'Video', v: '4K 120 fps · ProRes' },
 ];
 
 export function Hero() {
@@ -24,6 +30,8 @@ export function Hero() {
   const holeRef = useRef<SVGCircleElement>(null);
   const ringRef = useRef<SVGCircleElement>(null);
   const { reduced, compact } = usePrefs();
+  const [finish, setFinish] = useState<(typeof COLORWAYS)[number]['id']>('midnight');
+  const selected = COLORWAYS.find((item) => item.id === finish) ?? COLORWAYS[0];
 
   useEffect(() => {
     const root = rootRef.current;
@@ -139,28 +147,27 @@ export function Hero() {
       className="hero"
       ref={rootRef}
       data-lib="GSAP · SplitText + pin"
-      aria-label="NOCTIS C1 overview"
+      aria-label="NOCTIS 18 Pro Max overview"
     >
       <div className="hero__stage" ref={stageRef}>
         <div className="hero__media" aria-hidden="true">
-          <img src={HERO_IMG} alt="" fetchPriority="high" decoding="async" />
+          <img src={selected.image || HERO_IMG} alt={`${selected.label} titanium finish`} fetchPriority="high" decoding="async" />
           <span className="hero__lens" ref={lensRef} />
           <span className="hero__media-fade" />
         </div>
 
         <div className="hero__content shell">
           <div className="eyebrow-row hero__reveal">
-            <p className="eyebrow">NOCTIS C1 — Compact full-frame</p>
+            <p className="eyebrow">NOCTIS 18 Pro Max — iPhone 18 Pro Max concept</p>
             <LibTag>GSAP · SplitText + pin</LibTag>
           </div>
 
           <h1 className="hero__title" ref={titleRef}>
-            Pocket the dark.
+            The next large thing.
           </h1>
 
           <p className="hero__sub hero__reveal">
-            A 61-megapixel full-frame sensor and a fixed 28mm f/1.4 lens in a body that
-            disappears in a jacket pocket. Built for the hour after sunset.
+            A titanium-and-glass flagship with a cinematic display, pro camera system and all-day power. Designed for the hours that matter.
           </p>
 
           <div className="hero__actions hero__reveal">
@@ -172,7 +179,7 @@ export function Hero() {
                 scrollToId('reserve', -76);
               }}
             >
-              Reserve — $2,490
+              Notify me — $1,299
             </a>
             <a
               className="btn btn--ghost"
@@ -182,11 +189,28 @@ export function Hero() {
                 scrollToId('lens', -76);
               }}
             >
-              Explore the lens
+              Explore the display
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M3 10L10 3M10 3H4.4M10 3V8.6" stroke="currentColor" strokeWidth="1.2" />
               </svg>
             </a>
+          </div>
+
+          <div className="hero__colors hero__reveal" aria-label="Choose a finish">
+            <span className="mono hero__colors-label">Finish / {selected.label}</span>
+            <div className="hero__swatches">
+              {COLORWAYS.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={`hero__swatch${finish === item.id ? ' is-active' : ''}`}
+                  style={{ '--swatch': item.color } as React.CSSProperties}
+                  aria-label={`Select ${item.label} finish`}
+                  aria-pressed={finish === item.id}
+                  onClick={() => setFinish(item.id)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 

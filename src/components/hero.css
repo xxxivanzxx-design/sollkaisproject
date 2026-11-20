@@ -104,6 +104,29 @@
   margin-top: 6px;
 }
 
+.hero__colors {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -4px;
+}
+
+.hero__colors-label {
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero__swatches { display: flex; gap: 8px; }
+.hero__swatch {
+  width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,.24);
+  background: var(--swatch); box-shadow: inset 0 0 0 3px rgba(0,0,0,.16);
+  cursor: pointer; transition: transform .35s var(--ease-power), border-color .35s ease;
+}
+.hero__swatch:hover, .hero__swatch.is-active { transform: scale(1.18); border-color: var(--paper); }
+.hero__swatch.is-active { outline: 1px solid var(--signal); outline-offset: 3px; }
+
 /* ── foot strip ────────────────────────────────────────────── */
 
 .hero__foot {
