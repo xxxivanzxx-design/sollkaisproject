@@ -57,8 +57,8 @@ function ImportedPhoneModel({ finish }: { finish: Finish }) {
     loader.setMeshoptDecoder(MeshoptDecoder);
   });
   const model = useMemo(() => {
-    const root = gltf.scene;
-    const tone = new THREE.Color(FINISH_TONES[finish]);
+    const root = gltf.scene.clone(true);
+    const recolorable: { material: THREE.Material; target: THREE.Color }[] = [];
 
     root.traverse((object) => {
       if (!(object instanceof THREE.Mesh)) return;
@@ -72,8 +72,7 @@ function ImportedPhoneModel({ finish }: { finish: Finish }) {
         const isGlassPart = name.includes('screen') || name.includes('glass') || name.includes('lens');
         if ('color' in copy && copy.color instanceof THREE.Color) {
           if (isColourPart && !isGlassPart) {
-            copy.color.copy(tone);
-            if (name.includes('gloss') || name.includes('button')) copy.color.lerp(new THREE.Color('#ffffff'), 0.18);
+            recolorable.push({ material: copy, target: copy.color.clone() });
           } else {
             copy.color.lerp(new THREE.Color('#3f414b'), 0.52);
           }
@@ -85,10 +84,26 @@ function ImportedPhoneModel({ finish }: { finish: Finish }) {
       object.material = Array.isArray(object.material) ? materials : materials[0];
     });
 
-    return root;
-  }, [gltf.scene, finish]);
+    return { root, recolorable };
+  }, [gltf.scene]);
 
-  return <primitive object={model} scale={22.8} position={[0, -1.86, 0]} rotation={[0, Math.PI, 0]} />;
+  useEffect(() => {
+    const tone = new THREE.Color(FINISH_TONES[finish]);
+    model.recolorable.forEach(({ material, target }) => {
+      const name = material.name.toLowerCase();
+      target.copy(tone);
+      if (name.includes('gloss') || name.includes('button')) target.lerp(new THREE.Color('#ffffff'), 0.18);
+    });
+  }, [finish, model]);
+
+  useFrame((_, delta) => {
+    const amount = 1 - Math.pow(0.001, delta / 0.48);
+    model.recolorable.forEach(({ material, target }) => {
+      if ('color' in material && material.color instanceof THREE.Color) material.color.lerp(target, amount);
+    });
+  });
+
+  return <primitive object={model.root} scale={22.8} position={[0, -1.86, 0]} rotation={[0, Math.PI, 0]} />;
 }
 
 function Phone({ drag, finish }: { drag: RefObject<DragState>; finish: Finish }) {

@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
-import { LensZoom } from './components/LensZoom';
-import { Specs } from './components/Specs';
-import { Gallery } from './components/Gallery';
-import { Aperture } from './components/Aperture';
-import { LensStage } from './components/LensStage';
-import { Playground } from './components/Playground';
-import { Reserve } from './components/Reserve';
 import { initSmoothScroll } from './lib/smooth';
 import { usePrefs } from './lib/prefs';
+
+const LensZoom = lazy(() => import('./components/LensZoom').then(({ LensZoom: Component }) => ({ default: Component })));
+const Specs = lazy(() => import('./components/Specs').then(({ Specs: Component }) => ({ default: Component })));
+const Gallery = lazy(() => import('./components/Gallery').then(({ Gallery: Component }) => ({ default: Component })));
+const Aperture = lazy(() => import('./components/Aperture').then(({ Aperture: Component }) => ({ default: Component })));
+const LensStage = lazy(() => import('./components/LensStage').then(({ LensStage: Component }) => ({ default: Component })));
+const Playground = lazy(() => import('./components/Playground').then(({ Playground: Component }) => ({ default: Component })));
+const Reserve = lazy(() => import('./components/Reserve').then(({ Reserve: Component }) => ({ default: Component })));
 
 export function App() {
   const { reduced } = usePrefs();
@@ -20,25 +21,35 @@ export function App() {
   }, [reduced]);
 
   useEffect(() => {
-    const targets = Array.from(document.querySelectorAll<HTMLElement>('.section .shell > *, .gallery__head, .gallery__panel, .reserve__card, .footer__top, .footer__bottom'));
-    targets.forEach((node, index) => {
-      node.classList.add('reveal-item');
-      node.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
-    });
-    if (reduced) {
-      targets.forEach((node) => node.classList.add('is-visible'));
-      return;
-    }
-    const observer = new IntersectionObserver((entries) => {
+    const seen = new Set<HTMLElement>();
+    const observer = reduced ? null : new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          observer?.unobserve(entry.target);
         }
       });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
-    targets.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+
+    const collect = () => {
+      const targets = Array.from(document.querySelectorAll<HTMLElement>('.section .shell > *, .gallery__head, .gallery__panel, .reserve__card, .footer__top, .footer__bottom'));
+      targets.forEach((node, index) => {
+        if (seen.has(node)) return;
+        seen.add(node);
+        node.classList.add('reveal-item');
+        node.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
+        if (reduced) node.classList.add('is-visible');
+        else observer?.observe(node);
+      });
+    };
+
+    collect();
+    const mutations = new MutationObserver(collect);
+    mutations.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      observer?.disconnect();
+      mutations.disconnect();
+    };
   }, [reduced]);
 
   return (
@@ -49,13 +60,15 @@ export function App() {
 
       <main id="top">
         <Hero />
-        <LensZoom />
-        <Specs />
-        <Gallery />
-        <Aperture />
-        <LensStage />
-        <Playground />
-        <Reserve />
+        <Suspense fallback={null}>
+          <LensZoom />
+          <Specs />
+          <Gallery />
+          <Aperture />
+          <LensStage />
+          <Playground />
+          <Reserve />
+        </Suspense>
       </main>
     </>
   );
