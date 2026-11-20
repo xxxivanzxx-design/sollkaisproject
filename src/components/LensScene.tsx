@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef, type RefObject } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 export type DragState = { tx: number; ty: number; active: boolean };
 export type Finish = 'midnight' | 'silver' | 'ocean' | 'desert';
 
-const MODEL_URL = `${import.meta.env.BASE_URL}model/source/apple_iphone_18_pro_max_black.glb`;
+const MODEL_URL = `${import.meta.env.BASE_URL}model/source/apple_iphone_18_pro_max_black.meshopt.glb`;
 
 const FINISH_TONES: Record<Finish, string> = {
   midnight: '#26272b',
@@ -52,7 +53,9 @@ function StudioEnv() {
 }
 
 function ImportedPhoneModel({ finish }: { finish: Finish }) {
-  const gltf = useLoader(GLTFLoader, MODEL_URL);
+  const gltf = useLoader(GLTFLoader, MODEL_URL, (loader) => {
+    loader.setMeshoptDecoder(MeshoptDecoder);
+  });
   const model = useMemo(() => {
     const root = gltf.scene;
     const tone = new THREE.Color(FINISH_TONES[finish]);
