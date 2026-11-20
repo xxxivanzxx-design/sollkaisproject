@@ -1,15 +1,7 @@
 /** Fictional iPhone 18 Pro Max concept photography. */
+const A = (name: string) => `${import.meta.env.BASE_URL}media/${name}`;
 export const MEDIA = {
-  hero: '/manus-storage/async-images/sCK58yxvSo5DMJhcbYXPZ0/image-1.webp',
-  lens: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-2.webp',
-  dial: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-3.webp',
-  hand: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-4.webp',
-  plinth: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-3.webp',
-  rear: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-3.webp',
-  street: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-1.webp',
-  side: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-2.webp',
-  midnight: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-1.webp',
-  silver: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-2.webp',
-  blue: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-3.webp',
-  sand: '/manus-storage/async-images/rTDl8EgloHt7QNvcLfl3G4/image-4.webp',
+  hero: A('iphone-hero.webp'), lens: A('iphone-silver.webp'), dial: A('iphone-blue.webp'), hand: A('iphone-sand.webp'),
+  plinth: A('iphone-blue.webp'), rear: A('iphone-blue.webp'), street: A('iphone-hero.webp'), side: A('iphone-silver.webp'),
+  midnight: A('iphone-midnight.webp'), silver: A('iphone-silver.webp'), blue: A('iphone-blue.webp'), sand: A('iphone-sand.webp'),
 } as const;

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { SplitText } from 'gsap/SplitText';
 import { gsap, ScrollTrigger } from '../lib/smooth';
 import { usePrefs } from '../lib/prefs';
@@ -9,10 +10,10 @@ import './hero.css';
 
 const HERO_IMG = MEDIA.hero;
 const COLORWAYS = [
-  { id: 'midnight', label: 'Midnight', color: '#242428', image: MEDIA.midnight },
-  { id: 'silver', label: 'Silver', color: '#c6c7c9', image: MEDIA.silver },
-  { id: 'ocean', label: 'Ocean', color: '#17344c', image: MEDIA.blue },
-  { id: 'desert', label: 'Desert', color: '#a98e72', image: MEDIA.sand },
+  { id: 'midnight', label: 'Midnight', color: '#242428', image: MEDIA.midnight, material: 'Grade 5 titanium', display: '2,400 nits peak', battery: 'Up to 29 hours' },
+  { id: 'silver', label: 'Silver', color: '#c6c7c9', image: MEDIA.silver, material: 'Brushed titanium', display: '2,400 nits peak', battery: 'Up to 29 hours' },
+  { id: 'ocean', label: 'Ocean', color: '#17344c', image: MEDIA.blue, material: 'Anodised titanium', display: '2,400 nits peak', battery: 'Up to 29 hours' },
+  { id: 'desert', label: 'Desert', color: '#a98e72', image: MEDIA.sand, material: 'Warm titanium', display: '2,400 nits peak', battery: 'Up to 29 hours' },
 ] as const;
 
 const STATS = [
@@ -212,6 +213,18 @@ export function Hero() {
               ))}
             </div>
           </div>
+
+          <motion.div
+            className="hero__finish-meta hero__reveal"
+            key={selected.id}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="mono">{selected.material}</span>
+            <span className="mono">{selected.display}</span>
+            <span className="mono">{selected.battery}</span>
+          </motion.div>
         </div>
 
         <div className="hero__foot shell">

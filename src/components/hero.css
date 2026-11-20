@@ -127,6 +127,22 @@
 .hero__swatch:hover, .hero__swatch.is-active { transform: scale(1.18); border-color: var(--paper); }
 .hero__swatch.is-active { outline: 1px solid var(--signal); outline-offset: 3px; }
 
+.hero__finish-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  color: var(--muted);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__finish-meta span + span::before {
+  content: '·';
+  color: var(--signal);
+  margin-right: 16px;
+}
+
 /* ── foot strip ────────────────────────────────────────────── */
 
 .hero__foot {

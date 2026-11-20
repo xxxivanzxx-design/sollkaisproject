@@ -132,6 +132,22 @@ ol {
   padding-block: clamp(84px, 11vw, 168px);
 }
 
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease-expo), transform 0.85s var(--ease-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item { opacity: 1; transform: none; transition: none; }
+}
+
 .section--flush {
   padding-block: 0;
 }

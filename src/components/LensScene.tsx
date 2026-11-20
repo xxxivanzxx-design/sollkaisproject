@@ -72,11 +72,11 @@ function RoundedBody({ color }: { color: string }) {
     <>
       <mesh castShadow receiveShadow>
         <extrudeGeometry args={[body, { depth: 0.28, bevelEnabled: true, bevelSegments: 5, bevelSize: 0.055, bevelThickness: 0.045, curveSegments: 8 }]} />
-        <meshPhysicalMaterial color={color} metalness={0.86} roughness={0.28} clearcoat={0.35} clearcoatRoughness={0.2} />
+        <meshPhysicalMaterial color={color} metalness={0.94} roughness={0.2} clearcoat={0.72} clearcoatRoughness={0.12} envMapIntensity={1.8} />
       </mesh>
       <mesh position={[0, 0, 0.18]}>
         <extrudeGeometry args={[screen, { depth: 0.018, bevelEnabled: true, bevelSegments: 4, bevelSize: 0.035, bevelThickness: 0.02 }]} />
-        <meshPhysicalMaterial color="#080b12" metalness={0.12} roughness={0.12} clearcoat={1} clearcoatRoughness={0.03} transmission={0.06} />
+        <meshPhysicalMaterial color="#080b12" metalness={0.24} roughness={0.075} clearcoat={1} clearcoatRoughness={0.018} transmission={0.12} envMapIntensity={2.4} />
       </mesh>
       <mesh position={[0, 0, 0.205]}>
         <planeGeometry args={[1.42, 3.1]} />
@@ -136,6 +136,7 @@ function RoundedBody({ color }: { color: string }) {
 
 function Phone({ drag, finish }: { drag: RefObject<DragState>; finish: Finish }) {
   const group = useRef<THREE.Group>(null);
+  const reflection = useRef<THREE.PointLight>(null);
   const current = useRef({ x: -0.18, y: 0.48 });
   const phase = useRef(0);
   useFrame((_, delta) => {
@@ -151,8 +152,21 @@ function Phone({ drag, finish }: { drag: RefObject<DragState>; finish: Finish })
       phase.current += delta;
       d.ty = 0.48 + Math.sin(phase.current * 0.2) * 0.18;
     }
+    if (reflection.current) {
+      reflection.current.position.x = Math.sin(phase.current * 0.55) * 2.6;
+      reflection.current.position.y = 1.8 + Math.cos(phase.current * 0.4) * 0.9;
+    }
   });
-  return <group ref={group} scale={0.94} rotation={[0, 0, 0]}><RoundedBody color={FINISH_COLORS[finish]} /></group>;
+  return (
+    <group ref={group} scale={0.94} rotation={[0, 0, 0]}>
+      <RoundedBody color={FINISH_COLORS[finish]} />
+      <pointLight ref={reflection} position={[2.2, 2, 2.6]} intensity={9} distance={7} color="#fff0dc" />
+      <mesh position={[0.18, 0.05, 0.235]} rotation={[0, 0, -0.28]}>
+        <planeGeometry args={[0.08, 3.05]} />
+        <meshBasicMaterial color="#fff5e9" transparent opacity={0.14} />
+      </mesh>
+    </group>
+  );
 }
 
 export default function LensScene({ drag, active, finish = 'midnight' }: { drag: RefObject<DragState>; active: boolean; finish?: Finish }) {
