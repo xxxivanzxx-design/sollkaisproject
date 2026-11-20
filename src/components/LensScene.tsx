@@ -90,16 +90,24 @@ function RoundedBody({ color }: { color: string }) {
         <extrudeGeometry args={[screen, { depth: 0.014, bevelEnabled: true, bevelSegments: 3, bevelSize: 0.03, bevelThickness: 0.015 }]} />
         <meshPhysicalMaterial color="#101116" metalness={0.18} roughness={0.18} clearcoat={1} />
       </mesh>
-      <mesh position={[0.42, 0.85, -0.24]}>
+      <mesh position={[-0.47, 0.98, -0.24]}>
         <extrudeGeometry args={[island, { depth: 0.055, bevelEnabled: true, bevelSegments: 4, bevelSize: 0.045, bevelThickness: 0.025 }]} />
         <meshStandardMaterial color="#090a0d" metalness={0.6} roughness={0.28} />
       </mesh>
-      {[[-0.02, 0.96], [0.22, 0.96], [0.1, 0.7]].map(([x, y], i) => (
+      {[[-0.67, 1.18], [-0.32, 1.18], [-0.67, 0.82]].map(([x, y], i) => (
         <mesh key={i} position={[x, y, -0.29]} rotation={[Math.PI / 2, 0, 0]}>
           <cylinderGeometry args={[0.09, 0.09, 0.04, 32]} />
           <meshPhysicalMaterial color="#15171b" metalness={0.7} roughness={0.18} clearcoat={0.8} />
         </mesh>
       ))}
+      <mesh position={[-0.32, 0.82, -0.29]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.045, 0.045, 0.04, 24]} />
+        <meshBasicMaterial color="#d1a66d" />
+      </mesh>
+      <mesh position={[0.05, 0.82, -0.29]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.035, 0.035, 0.04, 24]} />
+        <meshStandardMaterial color="#050609" metalness={0.2} roughness={0.25} />
+      </mesh>
       <mesh position={[-0.94, 0.86, 0]}>
         <boxGeometry args={[0.06, 0.36, 0.12]} />
         <meshStandardMaterial color={color} metalness={0.9} roughness={0.25} />
@@ -112,6 +120,16 @@ function RoundedBody({ color }: { color: string }) {
         <boxGeometry args={[0.06, 0.3, 0.12]} />
         <meshStandardMaterial color={color} metalness={0.9} roughness={0.25} />
       </mesh>
+      <mesh position={[0, -1.89, 0]} rotation={[0, 0, 0]}>
+        <boxGeometry args={[0.28, 0.035, 0.025]} />
+        <meshStandardMaterial color="#050609" metalness={0.25} roughness={0.35} />
+      </mesh>
+      {[-0.38, 0.38].map((x) => (
+        <mesh key={x} position={[x, -1.89, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.035, 0.035, 0.025, 16]} />
+          <meshStandardMaterial color="#050609" metalness={0.25} roughness={0.35} />
+        </mesh>
+      ))}
     </>
   );
 }
