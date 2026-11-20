@@ -2,11 +2,18 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { usePrefs } from '../lib/prefs';
 import { MEDIA } from '../lib/media';
 import { LibTag } from './ui/LibTag';
+import type { Finish } from './LensScene';
 import './lensstage.css';
 
 const LensScene = lazy(() => import('./LensScene'));
 
 const SIDE_IMG = MEDIA.side;
+const FINISHES: { id: Finish; label: string; color: string }[] = [
+  { id: 'midnight', label: 'Midnight', color: '#26272b' },
+  { id: 'silver', label: 'Silver', color: '#b8bbc1' },
+  { id: 'ocean', label: 'Ocean', color: '#1d405d' },
+  { id: 'desert', label: 'Desert', color: '#a8896f' },
+];
 
 export function LensStage() {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -14,6 +21,7 @@ export function LensStage() {
   const last = useRef({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [finish, setFinish] = useState<Finish>('midnight');
   const { reduced, compact } = usePrefs();
   const enabled = !reduced;
 
@@ -50,8 +58,8 @@ export function LensStage() {
             It is a real object.
           </h2>
           <p className="lede">
-            The barrel is one turned aluminium tube. The focus ring is cut, not printed.
-            Four finishes bring subtle personality to the titanium frame: Midnight, Silver, Ocean and Desert.
+            Aerospace-grade titanium wraps a sculpted glass back. The camera island, buttons and
+            Ceramic Shield surface are all modeled as one quiet, precise object.
           </p>
 
           <ul className="stage__specs">
@@ -76,6 +84,22 @@ export function LensStage() {
             </svg>
             Drag to rotate
           </p>
+          <div className="stage__finishes" aria-label="Choose 3D phone finish">
+            <span className="mono stage__finishes-label">3D finish / {finish}</span>
+            <div className="stage__finish-buttons">
+              {FINISHES.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={`stage__finish${finish === item.id ? ' is-active' : ''}`}
+                  style={{ '--finish-color': item.color } as React.CSSProperties}
+                  aria-label={`Show ${item.label} finish in 3D`}
+                  aria-pressed={finish === item.id}
+                  onClick={() => setFinish(item.id)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="stage__panel">
@@ -112,7 +136,7 @@ export function LensStage() {
                   </div>
                 }
               >
-                <LensScene drag={drag} active={visible} />
+                <LensScene drag={drag} active={visible} finish={finish} />
               </Suspense>
             ) : (
               <div className="stage__fallback stage__fallback--static">
