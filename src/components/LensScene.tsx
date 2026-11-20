@@ -1,4 +1,4 @@
-import { useMemo, useRef, type RefObject } from 'react';
+import { useEffect, useMemo, useRef, type RefObject } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -31,7 +31,7 @@ function roundedShape(width: number, height: number, radius: number) {
 function StudioEnv() {
   const gl = useThree((s) => s.gl);
   const scene = useThree((s) => s.scene);
-  useMemo(() => {
+  useEffect(() => {
     const pmrem = new THREE.PMREMGenerator(gl);
     const envScene = new THREE.Scene();
     const made: THREE.Mesh[] = [];
