@@ -92,16 +92,16 @@ export function Nav() {
         transition={{ duration: 0.65, ease: EASE }}
       >
         <div className="nav__inner">
-          <button className="nav__brand" onClick={scrollToTop} aria-label="NOCTIS — back to top">
+          <button className="nav__brand" onClick={scrollToTop} aria-label="slproject — back to top">
             <span className="nav__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
                 <circle cx="12" cy="12" r="9.2" stroke="currentColor" strokeWidth="1.1" opacity="0.55" />
-                <circle cx="12" cy="12" r="4.4" stroke="#ff5a1f" strokeWidth="1.2" />
+                <circle cx="12" cy="12" r="4.4" stroke="#8B5CFF" strokeWidth="1.2" />
                 <circle cx="12" cy="12" r="1.15" fill="#ededea" />
                 <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2" stroke="currentColor" strokeWidth="1" opacity="0.5" />
               </svg>
             </span>
-            <span className="nav__wordmark">NOCTIS</span>
+            <span className="nav__wordmark">slproject</span>
             <span className="nav__model mono">18 PM</span>
           </button>
 

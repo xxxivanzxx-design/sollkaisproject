@@ -166,7 +166,7 @@ export function Reserve() {
         <div className="shell">
           <div className="footer__top">
             <div className="footer__brand">
-              <span className="footer__wordmark">NOCTIS</span>
+              <span className="footer__wordmark">slproject</span>
               <p className="footer__tag">Designed for the next long day.</p>
             </div>
             <nav className="footer__links" aria-label="Footer">
@@ -184,7 +184,7 @@ export function Reserve() {
           </div>
 
           <div className="footer__bottom">
-            <span className="mono">© 2027 NOCTIS Optics K.K. — A fictional product study.</span>
+            <span className="mono">© 2027 slproject studio — A fictional product study.</span>
             <span className="mono footer__build">Built with GSAP · Motion · Anime.js · R3F</span>
             <button className="mono footer__top-btn" onClick={scrollToTop}>
               Back to top

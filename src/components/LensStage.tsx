@@ -155,7 +155,7 @@ export function LensStage() {
           </div>
 
           <div className="stage__panel-foot">
-            <span className="mono">Procedural geometry · no model download</span>
+            <span className="mono">Apple iPhone 18 Pro Max GLB · local textures</span>
             <span className="mono dim">{compact ? 'Touch to rotate' : 'Pointer to rotate'}</span>
           </div>
         </div>

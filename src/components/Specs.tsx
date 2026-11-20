@@ -78,7 +78,7 @@ function CameraSystemDiagram() {
           width="6"
           height="6"
           rx="1"
-          fill={hot ? '#ff5a1f' : 'rgba(255,255,255,0.16)'}
+          fill={hot ? '#8B5CFF' : 'rgba(255,255,255,0.16)'}
           opacity={hot ? 1 : 0.28 + ((r * 15 + c) % 7) * 0.06}
         />,
       );
@@ -88,8 +88,8 @@ function CameraSystemDiagram() {
     <svg className="sensor" viewBox="0 0 139 85" aria-hidden="true">
       <rect x="0.5" y="0.5" width="138" height="84" rx="4" fill="none" stroke="rgba(255,255,255,0.1)" />
       {cells}
-      <circle cx="79" cy="41" r="16" fill="none" stroke="#ff5a1f" strokeWidth="0.8" opacity="0.55" />
-      <path d="M79 19v-6M79 63v6M57 41h-6M101 41h6" stroke="#ff5a1f" strokeWidth="0.8" opacity="0.7" />
+      <circle cx="79" cy="41" r="16" fill="none" stroke="#8B5CFF" strokeWidth="0.8" opacity="0.55" />
+      <path d="M79 19v-6M79 63v6M57 41h-6M101 41h6" stroke="#8B5CFF" strokeWidth="0.8" opacity="0.7" />
     </svg>
   );
 }
@@ -103,7 +103,7 @@ function SpotlightCard() {
   const bg = useTransform(
     [sx, sy],
     ([x, y]: number[]) =>
-      `radial-gradient(320px circle at ${x}% ${y}%, rgba(255,90,31,0.22), rgba(255,90,31,0.05) 42%, transparent 68%)`,
+      `radial-gradient(320px circle at ${x}% ${y}%, rgba(139,92,255,0.22), rgba(139,92,255,0.05) 42%, transparent 68%)`,
   );
   const { finePointer, reduced } = usePrefs();
 

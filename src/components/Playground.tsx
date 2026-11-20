@@ -141,7 +141,7 @@ export function Playground() {
               <span className="pg__card-mark" aria-hidden="true">
                 <svg viewBox="0 0 40 40" width="40" height="40" fill="none">
                   <circle cx="20" cy="20" r="15" stroke="rgba(237,237,234,.5)" strokeWidth="1" />
-                  <circle cx="20" cy="20" r="7.4" stroke="#ff5a1f" strokeWidth="1.4" />
+                  <circle cx="20" cy="20" r="7.4" stroke="#8B5CFF" strokeWidth="1.4" />
                   <circle cx="20" cy="20" r="2" fill="#ededea" />
                 </svg>
               </span>

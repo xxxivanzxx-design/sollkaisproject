@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
-   NOCTIS — design tokens
+   slproject — design tokens
    One accent. Three surfaces. Hairlines at 8% white.
    ───────────────────────────────────────────────────────────── */
 
@@ -20,10 +20,10 @@
   --line-2: rgba(255, 255, 255, 0.14);
   --line-3: rgba(255, 255, 255, 0.22);
 
-  /* the single accent */
-  --signal: #ff5a1f;
-  --signal-soft: rgba(255, 90, 31, 0.14);
-  --signal-line: rgba(255, 90, 31, 0.42);
+  /* the single ultraviolet accent */
+  --signal: #8B5CFF;
+  --signal-soft: rgba(139, 92, 255, 0.14);
+  --signal-line: rgba(139, 92, 255, 0.42);
 
   /* geometry */
   --r-panel: 20px;

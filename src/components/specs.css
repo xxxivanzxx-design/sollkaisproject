@@ -249,7 +249,7 @@
 
 .detail__row.is-active .detail__row-dot {
   background: var(--signal);
-  box-shadow: 0 0 10px 1px rgba(255, 90, 31, 0.75);
+  box-shadow: 0 0 10px 1px rgba(139, 92, 255, 0.75);
 }
 
 .detail__row-label {

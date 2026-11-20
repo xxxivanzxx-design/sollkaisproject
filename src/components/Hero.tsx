@@ -264,7 +264,7 @@ export function Hero() {
             cy="0"
             r="9999"
             fill="none"
-            stroke="#ff5a1f"
+            stroke="#8B5CFF"
             strokeWidth="1.4"
             filter="url(#noctis-iris-glow)"
           />

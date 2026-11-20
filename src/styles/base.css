@@ -179,7 +179,7 @@ ol {
   height: 5px;
   border-radius: 50%;
   background: var(--signal);
-  box-shadow: 0 0 12px 1px rgba(255, 90, 31, 0.7);
+  box-shadow: 0 0 12px 1px rgba(139, 92, 255, 0.7);
   flex: none;
 }
 
@@ -311,7 +311,7 @@ body.tags-on .libtag {
 .btn--signal {
   background: var(--signal);
   color: #140803;
-  box-shadow: 0 0 0 1px rgba(255, 90, 31, 0.4), 0 12px 40px -12px rgba(255, 90, 31, 0.55);
+  box-shadow: 0 0 0 1px rgba(139, 92, 255, 0.4), 0 12px 40px -12px rgba(139, 92, 255, 0.55);
 }
 
 .btn--signal:hover {

@@ -113,7 +113,7 @@
   height: 5px;
   border-radius: 50%;
   background: var(--signal);
-  box-shadow: 0 0 10px rgba(255, 90, 31, 0.8);
+  box-shadow: 0 0 10px rgba(139, 92, 255, 0.8);
 }
 
 .reserve__list {
@@ -165,7 +165,7 @@
 
 .reserve__input:focus {
   border-color: var(--signal);
-  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.16);
+  box-shadow: 0 0 0 3px rgba(139, 92, 255, 0.16);
 }
 
 .reserve__input.is-error {
@@ -185,7 +185,7 @@
   padding: 18px;
   border: 1px solid var(--signal-line);
   border-radius: var(--r-panel-sm);
-  background: rgba(255, 90, 31, 0.06);
+  background: rgba(139, 92, 255, 0.06);
 }
 
 .reserve__done-mark {
