@@ -50,7 +50,7 @@ function StudioEnv() {
     // the orange rim behind the lens
     panel(7, 4, [2.2, 0.62, 0.2], [0, 0.8, -8.5]);
     // softbox in front of the lens, so the flat glass gets a highlight
-    panel(3.6, 2.0, [2.6, 2.35, 2.2], [0, 2.6, 11]);
+    panel(2.8, 1.6, [1.5, 1.4, 1.3], [0, 2.2, 11]);
     // narrow strip, front right
     panel(0.5, 4.2, [1.2, 1.35, 1.5], [4.6, 0.4, 10.4]);
 
@@ -101,7 +101,8 @@ function Knurl() {
 
 function Lens({ drag }: { drag: RefObject<DragState> }) {
   const group = useRef<THREE.Group>(null);
-  const current = useRef({ x: -0.16, y: 0.55 });
+  const current = useRef({ x: -0.12, y: 0.42 });
+  const phase = useRef(0);
 
   useFrame((_, delta) => {
     const g = group.current;
@@ -112,8 +113,10 @@ function Lens({ drag }: { drag: RefObject<DragState> }) {
     current.current.x += (d.tx - current.current.x) * k;
     g.rotation.y = current.current.y;
     g.rotation.x = THREE.MathUtils.clamp(current.current.x, -0.6, 0.6);
+    // idle: a slow breath around the three-quarter view, never a full spin
     if (!d.active) {
-      d.ty += delta * 0.035;
+      phase.current += delta;
+      d.ty = 0.42 + Math.sin(phase.current * 0.2) * 0.2;
     }
   });
 
@@ -152,6 +155,11 @@ function Lens({ drag }: { drag: RefObject<DragState> }) {
         <ringGeometry args={[0.9, 1.0, 96]} />
         <meshStandardMaterial color="#1b1b21" metalness={0.95} roughness={0.2} side={THREE.DoubleSide} />
       </mesh>
+      {/* inner retaining ring around the element */}
+      <mesh position={[0, 0, 0.508]}>
+        <ringGeometry args={[0.775, 0.9, 96]} />
+        <meshStandardMaterial color="#0d0d10" metalness={0.85} roughness={0.4} side={THREE.DoubleSide} />
+      </mesh>
       <mesh position={[0, 0, 0.5]}>
         <torusGeometry args={[0.985, 0.018, 16, 96]} />
         <meshStandardMaterial color="#2a2a31" metalness={0.98} roughness={0.12} />
@@ -181,13 +189,13 @@ function Lens({ drag }: { drag: RefObject<DragState> }) {
       </mesh>
 
       {/* front element — dark glass dome */}
-      {/* a very flat meniscus: radius 4.09, 12.7° cap → 0.9 rim, 0.1 of bulge */}
-      <mesh position={[0, 0, -3.49]} rotation={[Math.PI / 2, 0, 0]}>
-        <sphereGeometry args={[4.09, 96, 96, 0, Math.PI * 2, 0, 0.2216]} />
+      {/* a very flat meniscus: radius 3.43, 13.1° cap → 0.78 rim, 0.09 of bulge */}
+      <mesh position={[0, 0, -2.84]} rotation={[Math.PI / 2, 0, 0]}>
+        <sphereGeometry args={[3.43, 96, 96, 0, Math.PI * 2, 0, 0.2295]} />
         <meshPhysicalMaterial
           color="#05070d"
           metalness={0.05}
-          roughness={0.03}
+          roughness={0.075}
           clearcoat={1}
           clearcoatRoughness={0.03}
           ior={1.55}
