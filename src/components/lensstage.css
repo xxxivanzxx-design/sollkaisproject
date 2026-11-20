@@ -1,0 +1,211 @@
+.stage {
+  position: relative;
+  background: var(--ink-0);
+}
+
+.stage__grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(28px, 4.4vw, 72px);
+  align-items: center;
+}
+
+.stage__title {
+  margin-top: 18px;
+}
+
+.stage__copy .lede {
+  margin-top: 22px;
+  max-width: 38ch;
+}
+
+.stage__specs {
+  margin-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.stage__specs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.stage__specs li span:last-child {
+  color: var(--muted);
+  text-align: right;
+}
+
+.stage__accent {
+  color: var(--signal) !important;
+}
+
+.stage__hint {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ── panel ─────────────────────────────────────────────────── */
+
+.stage__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stage__host {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-height: 620px;
+  border-radius: var(--r-panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background:
+    radial-gradient(70% 60% at 50% 42%, rgba(255, 90, 31, 0.12), transparent 62%),
+    radial-gradient(90% 90% at 50% 50%, #17171a 0%, #0d0d0f 70%, #0b0b0c 100%);
+  cursor: grab;
+  touch-action: none;
+  isolation: isolate;
+}
+
+.stage__host:active {
+  cursor: grabbing;
+}
+
+.stage__host canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.stage__host::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 78%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stage__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.stage__fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  filter: blur(2px) saturate(0.7);
+}
+
+.stage__fallback--static img {
+  opacity: 0.85;
+  filter: saturate(0.95);
+}
+
+.stage__fallback span {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(11, 11, 12, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 5px 8px;
+  backdrop-filter: blur(6px);
+}
+
+.stage__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 4px 7px;
+  background: rgba(11, 11, 12, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.stage__axis {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  display: flex;
+  gap: 4px;
+  opacity: 0.45;
+}
+
+.stage__axis span {
+  width: 14px;
+  height: 1px;
+  background: var(--paper);
+  display: block;
+}
+
+.stage__axis span:last-child {
+  width: 1px;
+  height: 14px;
+  margin-top: -6px;
+  background: var(--signal);
+}
+
+.stage__panel-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 6px;
+  font-size: 0.55rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ── responsive ────────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+  .stage__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .stage__host {
+    aspect-ratio: 4 / 3.4;
+    max-height: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .stage__host {
+    aspect-ratio: 1 / 1;
+  }
+  .stage__panel-foot {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

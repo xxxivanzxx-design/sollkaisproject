@@ -1,0 +1,441 @@
+/* ─────────────────────────────────────────────────────────────
+   base — reset, typography, primitives
+   ───────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ink-0);
+  color: var(--paper);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--signal);
+  color: #0b0b0c;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* thin scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2e var(--ink-0);
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--ink-0);
+}
+*::-webkit-scrollbar-thumb {
+  background: #26262a;
+  border-radius: 99px;
+  border: 2px solid var(--ink-0);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #35353a;
+}
+
+/* ── layout primitives ─────────────────────────────────────── */
+
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(84px, 11vw, 168px);
+}
+
+.section--flush {
+  padding-block: 0;
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+  border: 0;
+}
+
+/* ── type primitives ───────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  font-weight: 450;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 12px 1px rgba(255, 90, 31, 0.7);
+  flex: none;
+}
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+/* the toggleable motion-library annotation */
+.libtag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.022);
+  font-size: 0.53rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.45s var(--ease-expo), transform 0.45s var(--ease-expo);
+}
+
+.libtag::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--signal);
+  opacity: 0.85;
+  flex: none;
+}
+
+body.tags-on .libtag {
+  opacity: 1;
+  transform: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.display {
+  font-size: var(--t-display);
+  font-weight: 500;
+  letter-spacing: -0.052em;
+  line-height: 0.86;
+}
+
+.h1 {
+  font-size: var(--t-h1);
+  letter-spacing: -0.048em;
+  line-height: 0.9;
+}
+
+.h2 {
+  font-size: var(--t-h2);
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+
+.h3 {
+  font-size: var(--t-h3);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.lede {
+  font-size: clamp(1rem, 1.25vw, 1.22rem);
+  line-height: 1.5;
+  color: var(--muted);
+  letter-spacing: -0.014em;
+  max-width: 46ch;
+}
+
+.dim {
+  color: var(--muted);
+}
+
+.tiny {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.accent {
+  color: var(--signal);
+}
+
+/* line-mask used by SplitText + CSS reveals */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+/* ── pills & buttons ───────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 26px;
+  border-radius: var(--r-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background-color 0.4s var(--ease-expo), color 0.4s var(--ease-expo),
+    border-color 0.4s var(--ease-expo), transform 0.4s var(--ease-expo);
+  will-change: transform;
+}
+
+.btn--signal {
+  background: var(--signal);
+  color: #140803;
+  box-shadow: 0 0 0 1px rgba(255, 90, 31, 0.4), 0 12px 40px -12px rgba(255, 90, 31, 0.55);
+}
+
+.btn--signal:hover {
+  background: #ff6d38;
+}
+
+.btn--ghost {
+  border-color: var(--line-2);
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.btn--ghost:hover {
+  border-color: var(--line-3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--paper);
+  padding-bottom: 2px;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--line-3);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-expo), background-color 0.4s ease;
+}
+
+.link-underline:hover::after {
+  background: var(--signal);
+  transform: scaleX(1.02);
+}
+
+/* ── panels ────────────────────────────────────────────────── */
+
+.panel {
+  position: relative;
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  overflow: hidden;
+}
+
+.panel--raised {
+  background: linear-gradient(180deg, var(--ink-2), var(--ink-1));
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+/* ── film grain ────────────────────────────────────────────── */
+
+.grain {
+  position: fixed;
+  inset: -60px;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  animation: grain-shift 8s steps(6) infinite;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(-14px, 8px, 0); }
+  40% { transform: translate3d(9px, -12px, 0); }
+  60% { transform: translate3d(-6px, 14px, 0); }
+  80% { transform: translate3d(12px, 4px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* ── utilities ─────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

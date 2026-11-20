@@ -1,0 +1,63 @@
+/* ─────────────────────────────────────────────────────────────
+   NOCTIS — design tokens
+   One accent. Three surfaces. Hairlines at 8% white.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* surfaces */
+  --ink-0: #0b0b0c;
+  --ink-1: #111113;
+  --ink-2: #17171a;
+  --ink-3: #1d1d21;
+
+  /* type */
+  --paper: #ededea;
+  --muted: #8f8f8a;
+  --faint: #61615d;
+
+  /* hairlines */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
+  --line-3: rgba(255, 255, 255, 0.22);
+
+  /* the single accent */
+  --signal: #ff5a1f;
+  --signal-soft: rgba(255, 90, 31, 0.14);
+  --signal-line: rgba(255, 90, 31, 0.42);
+
+  /* geometry */
+  --r-panel: 20px;
+  --r-panel-sm: 14px;
+  --r-pill: 999px;
+  --gutter: clamp(18px, 4.2vw, 64px);
+  --max: 1560px;
+  --nav-h: 68px;
+
+  /* type stacks */
+  --font-sans: 'Geist Variable', 'Geist', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, 'SFMono-Regular',
+    'SF Mono', Menlo, Consolas, monospace;
+
+  /* motion */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* type scale */
+  --t-display: clamp(3.4rem, 11.2vw, 10.5rem);
+  --t-h1: clamp(2.6rem, 7.4vw, 6.6rem);
+  --t-h2: clamp(2.1rem, 4.9vw, 4.2rem);
+  --t-h3: clamp(1.35rem, 2.1vw, 1.85rem);
+  --t-body: clamp(0.98rem, 1.05vw, 1.12rem);
+  --t-small: 0.82rem;
+  --t-mono: 0.7rem;
+
+  color-scheme: dark;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --nav-h: 58px;
+  }
+}
