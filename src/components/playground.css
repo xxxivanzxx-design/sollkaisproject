@@ -39,7 +39,7 @@
   place-items: center;
   overflow: hidden;
   background:
-    radial-gradient(60% 55% at 50% 58%, #16161a 0%, #0d0d0f 62%, #0b0b0c 100%);
+    radial-gradient(60% 55% at 50% 58%, rgba(139, 92, 255, 0.11) 0%, #16161a 24%, #0d0d0f 62%, #0b0b0c 100%);
 }
 
 .pg__grid {
@@ -96,12 +96,23 @@
   gap: 12px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: linear-gradient(168deg, #1d1d22 0%, #131316 58%, #0e0e10 100%);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(139, 92, 255, 0.24), transparent 22%),
+    linear-gradient(168deg, #272330 0%, #15141a 58%, #0e0e10 100%);
   box-shadow:
     0 40px 70px -40px rgba(0, 0, 0, 0.95),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
   will-change: transform;
   z-index: 2;
+}
+
+.pg__card::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 .pg__card.is-css-run {

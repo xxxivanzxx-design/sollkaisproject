@@ -82,11 +82,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.6s var(--ease-expo);
+  filter: saturate(0.68) contrast(1.08) brightness(0.72) sepia(0.08) hue-rotate(6deg);
+  transition: transform 1.6s var(--ease-expo), filter 0.8s ease;
+}
+
+.gallery__panel:not(.gallery__panel--quote):not(.gallery__panel--end)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(145deg, rgba(139, 92, 255, 0.18), transparent 42%),
+    linear-gradient(0deg, rgba(11, 11, 12, 0.22), transparent 52%);
+  mix-blend-mode: screen;
+  opacity: 0.72;
 }
 
 .gallery__panel:hover img {
   transform: scale(1.035);
+  filter: saturate(0.82) contrast(1.1) brightness(0.78) sepia(0.06) hue-rotate(6deg);
 }
 
 .gallery__panel--wide {

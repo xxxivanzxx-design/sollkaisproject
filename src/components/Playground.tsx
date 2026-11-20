@@ -125,8 +125,8 @@ export function Playground() {
             <h2 className="h2 pg__title">Same move.<br />Four engines.</h2>
           </div>
           <p className="lede pg__lede">
-            One transform, four implementations. Change the duration or the curve and run it
-            again — the pixels should be indistinguishable. That is the whole test.
+            This is a motion lab: the same move is recreated in GSAP, Motion, Anime.js and CSS.
+            Change the duration or curve, then run it again to compare the timing.
           </p>
         </header>
 
@@ -145,8 +145,8 @@ export function Playground() {
                   <circle cx="20" cy="20" r="2" fill="#ededea" />
                 </svg>
               </span>
-              <span className="pg__card-label mono">NOCTIS 18 Pro Max</span>
-              <span className="pg__card-sub mono">drag · no</span>
+              <span className="pg__card-label mono">SLPROJECT MOTION TOKEN</span>
+              <span className="pg__card-sub mono">one gesture · four engines</span>
             </div>
             <span className="pg__run-count mono" key={runs}>
               run {String(runs).padStart(3, '0')}

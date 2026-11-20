@@ -8,6 +8,13 @@ export type Finish = 'midnight' | 'silver' | 'ocean' | 'desert';
 
 const MODEL_URL = `${import.meta.env.BASE_URL}model/source/apple_iphone_18_pro_max_black.glb`;
 
+const FINISH_TONES: Record<Finish, string> = {
+  midnight: '#26272b',
+  silver: '#c5c9d1',
+  ocean: '#294d70',
+  desert: '#ad8b72',
+};
+
 function StudioEnv() {
   const gl = useThree((s) => s.gl);
   const scene = useThree((s) => s.scene);
@@ -48,6 +55,7 @@ function ImportedPhoneModel({ finish }: { finish: Finish }) {
   const gltf = useLoader(GLTFLoader, MODEL_URL);
   const model = useMemo(() => {
     const root = gltf.scene;
+    const tone = new THREE.Color(FINISH_TONES[finish]);
 
     root.traverse((object) => {
       if (!(object instanceof THREE.Mesh)) return;
@@ -56,8 +64,16 @@ function ImportedPhoneModel({ finish }: { finish: Finish }) {
       const originalMaterials = Array.isArray(object.material) ? object.material : [object.material];
       const materials = originalMaterials.map((material) => {
         const copy = material.clone();
+        const name = copy.name.toLowerCase();
+        const isColourPart = name.includes('colour_') || name.includes('black_backpanel') || name.includes('black_side_panel');
+        const isGlassPart = name.includes('screen') || name.includes('glass') || name.includes('lens');
         if ('color' in copy && copy.color instanceof THREE.Color) {
-          copy.color.lerp(new THREE.Color('#3f414b'), 0.52);
+          if (isColourPart && !isGlassPart) {
+            copy.color.copy(tone);
+            if (name.includes('gloss') || name.includes('button')) copy.color.lerp(new THREE.Color('#ffffff'), 0.18);
+          } else {
+            copy.color.lerp(new THREE.Color('#3f414b'), 0.52);
+          }
         }
         if ('envMapIntensity' in copy) copy.envMapIntensity = 1.7;
         if ('clearcoat' in copy) copy.clearcoat = Math.max(copy.clearcoat, 0.45);
