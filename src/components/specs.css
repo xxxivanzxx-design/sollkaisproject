@@ -30,19 +30,43 @@
 }
 
 .bento__cell {
+  position: relative;
+  overflow: hidden;
   padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-height: 208px;
-  transition: border-color 0.5s var(--ease-expo), background-color 0.5s var(--ease-expo);
+  transition: transform 0.55s var(--ease-expo), border-color 0.5s var(--ease-expo), background-color 0.5s var(--ease-expo), box-shadow 0.55s var(--ease-expo);
   background: linear-gradient(165deg, #1b1b1f 0%, #161619 54%, #131316 100%);
   border-color: rgba(255, 255, 255, 0.09);
 }
 
+.bento__cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(240px circle at 18% 12%, rgba(139, 92, 255, 0.2), transparent 68%);
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.bento__cell > * {
+  position: relative;
+  z-index: 1;
+}
+
 .bento__cell:hover {
+  transform: translateY(-5px);
   border-color: rgba(255, 255, 255, 0.16);
   background: linear-gradient(165deg, #1f1f24 0%, #18181c 54%, #151518 100%);
+  box-shadow: 0 18px 42px -30px rgba(139, 92, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.bento__cell:hover::before,
+.bento__cell:focus-within::before {
+  opacity: 1;
 }
 
 .bento__cell--sensor {
@@ -400,6 +424,10 @@
   }
   .bento__cell--sensor {
     min-height: 300px;
+  }
+
+  .bento__cell:hover {
+    transform: none;
   }
   .detail__row {
     padding: 15px 2px;

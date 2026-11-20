@@ -21,7 +21,10 @@ export function App() {
 
   useEffect(() => {
     const targets = Array.from(document.querySelectorAll<HTMLElement>('.section .shell > *, .gallery__head, .gallery__panel, .reserve__card, .footer__top, .footer__bottom'));
-    targets.forEach((node) => node.classList.add('reveal-item'));
+    targets.forEach((node, index) => {
+      node.classList.add('reveal-item');
+      node.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
+    });
     if (reduced) {
       targets.forEach((node) => node.classList.add('is-visible'));
       return;
